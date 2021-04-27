@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+ "http://www.springframework.org/dtd/spring-beans-2.0.dtd" >
+<beans>
+<!-- 1.jdbc.properties파일 읽어오기
+         setlocations("WEB-INF/jdbc.properties")
+ -->
+<bean id="propertyConfiguere"
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+           <list>
+              <value>WEB-INF/jdbc.properties</value>
+           </list>
+        </property>
+</bean>
+
+<!-- 2.jdbc.properties파일에서 각각의 DB정보(드라이버명,게정명,암호,,) 
+     ${키명}=>value값을 가져올수 있도록 설정 
+     destroy-method="프로그램 종료시 자동으로 호출할 메서드명을 지정할때
+                                 필요한 속성명"
+     close매서드(메모리 해제)(메서드명만 사용할것)                            
+-->
+<bean id="dataSource"
+       class="org.apache.commons.dbcp.BasicDataSource"
+       destroy-method="close">
+        <property name="driverClassName" 
+                         value="${jdbc.driverClassName}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+</bean>
+
+<!--3.Mybaties 빈을 등록(SqlSessionFactoryBean)
+       setConfigLocation("DB연동환경설정파일")(연결됐을때 불러올 환경설정파일명)
+       setDataSource("연결시킬 DataSource id값")
+  -->
+<bean id="sqlSessionFactory"
+        class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="configLocation" 
+                         value="WEB-INF/SqlMapConfig.xml" />
+        <property name="dataSource" ref="dataSource" />
+</bean>
+
+<!--4.SqlSessionTemplate(SqlSessionFactory 객체를 더 쉽게 얻어오기 필요 -->
+<bean id="sqlSessionTemplate"
+           class="org.mybatis.spring.SqlSessionTemplate" >
+          <constructor-arg index="0" ref="sqlSessionFactory" />
+</bean>
+
+</beans>
+

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 위 3개의 메타 태그는 *반드시* head 태그의 처음에 와야합니다; 
+              어떤 다른 콘텐츠들은 반드시 이 태그들 *다음에* 와야 합니다 -->
+              <title>그림게시판</title>
+    <!-- 부트스트랩 -->
+    
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    header {height:100px;
+                  background-color:rgba(125,211,242,0.5);/*투명도*/
+                  border-radius:15px;padding:15px;margin:10px 0;
+                  font-family:'Nanum Gothic',sans-serif;
+                  text-align:center;       
+       }
+     footer{
+         height:100px;
+         font-family:'Nanum Gothic',sans-serif;
+         border-radius:15px;padding:15px;margin:10px 0;
+         background-color:#B2E4E0;
+         text-align:center;  
+     }  
+       li{
+      list-style:none;
+     }
+   table.table2{
+                border-collapse: separate;
+                border-spacing: 1px;
+                text-align: left;
+                line-height: 1.5;
+                border-top: 1px solid #ccc;
+                margin : 20px 10px;
+        }
+        table.table2 tr {
+                 width: 50px;
+                 padding: 10px;
+                font-weight: bold;
+                vertical-align: top;
+                border-bottom: 1px solid #ccc;
+        }
+        table.table2 td {
+                 width: 100px;
+                 padding: 10px;
+                 vertical-align: top;
+                 border-bottom: 1px solid #ccc;
+        }
+      
+    </style>
+    <!-- IE8 에서 HTML5 요소와 미디어 쿼리를 위한 HTML5 shim 와 Respond.js 
+         IE의 버전이 낮은 경우에는 html5에 대한 태그가 인식X ->인식을 시켜주는 옵션
+    -->
+    <!-- WARNING: Respond.js 는 당신이 file:// 을 통해 페이지를 볼 때는 동작하지 않습니다. -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+   <div class="container">
+       <header>
+           <h2 class="text-success">그림게시판</h2>
+       </header>
+       
+       <!-- 상단 네비게이션   -->
+       <nav class="navbar navbar-default" role="navigation">
+           <div class="navbar-header">
+               <button type="button" class="navbar-toggle"
+                                                   data-toggle="collapse"
+                                                   data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">navigation title</span>                        
+           </button>
+           <a class="navbar-brand glyphicon" href="main.jsp">
+               <span class="glyphicon glyphicon-home"></span>
+           </a>
+           </div>
+           <div class="collapse navbar-collapse navbar-ex1-collapse">
+              <ul class="nav navbar-nav">
+              <!--  -->
+                 <li class="dropdown">
+                    <a data-toggle="dropdown" href="#">회원
+                        <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                  <li><a href="#">회원로그인</a></li>
+                  <li><a href="#">마이페이지</a></li>
+                  <li><a href="#">장바구니</a></li>
+                  </ul>    
+                  </li>
+              
+              <!-- 드랍다운부분을 추가2  -->
+              <li class="dropdown">
+                    <a data-toggle="dropdown" href="#">게시판
+                        <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                  <li><a href="freeBoard.html">자유게시판</a></li>
+                  <li><a href="geulimBoard1.html">그림게시판</a></li>
+                  </ul>    
+                </li>
+                <!-- 드롭다운부분 추가3  -->
+                <li class="dropdown">
+                    <a data-toggle="dropdown" href="#">이달의아이템
+                        <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                  <li><a href="#">인테리어</a></li>
+                  <li><a href="#">생활용품</a></li>
+                  <li><a href="#">책상</a></li>
+                  <li><a href="#">의자</a></li>
+                  <li><a href="#">조명</a></li>
+                  </ul>    
+                  </li>
+                </ul>
+                <!--검색창-->
+              <form class="navbar-form navbar-right" role="search">
+                 <div class="form-group">
+                    <input type="text" class="form-control" placeholder="item name search">
+                 </div>
+                     <button type="button" class="btn btn-default">Submit</button>
+              </form>
+           </div>
+        </nav>
+
+          <!-- 헤더 -->
+        <form>
+        주거형태&nbsp;&nbsp;&nbsp;
+         <select size=1>
+              <option selected>주거형태</option>
+              <option>아파트</option>
+              <option>빌라&연립</option>
+              <option>오피스텔</option>
+              <option>주택</option>
+              <option>옥탑</option>
+              <option>반지하</option>
+              <option>상가</option>
+           </select>
+           &nbsp;&nbsp;
+             <select size=1>
+              <option selected>평수</option>
+              <option>10평미만</option>
+              <option>10평대</option>
+              <option>20평대</option>
+              <option>30평대</option>
+              <option>40평대</option>
+              <option>50평 이상</option>
+           </select>
+            &nbsp;&nbsp;
+             <select size=1>
+              <option selected>거주형태</option>
+              <option>싱글라이프</option>
+              <option>신혼부부</option>
+              <option>아이가 있는 집</option>
+              <option>부모님과 함꼐 사는 집</option>
+              <option>기타</option>
+           </select>
+           </form>
+           <br>
+           <!-- 공간 -->
+           <form>
+        공간&nbsp;&nbsp;&nbsp;
+         <select size=1>
+              <option selected>공간</option>
+              <option>원룸</option>
+              <option>현관</option>
+              <option>거실</option>
+              <option>주방</option>
+              <option>화장실</option>
+              <option>베란다</option>
+              <option>드레스룸</option>
+              <option>아이방</option>
+              <option>사무공간</option>
+           </select>
+           &nbsp;&nbsp;
+           </form>
+           <br>
+           
+           <!-- 스타일, 분야 -->
+           <form>
+        스타일&nbsp;&nbsp;&nbsp;
+         <select size=1>
+              <option selected>스타일</option>
+              <option>모던</option>
+              <option>북유럽</option>
+              <option>빈티지</option>
+              <option>내추럴</option>
+              <option>로멘틱</option>
+              <option>클래식</option>
+              <option>유니크</option>
+           </select>
+           &nbsp;&nbsp;
+           <select size=1>
+              <option selected>분야</option>
+              <option>리모델링</option>
+              <option>홈스타일링</option>
+              <option>부분공사</option>
+              <option>건축</option>
+           </select>
+           </form>
+ 
+    <!--  글쓰기  -->
+    <br>
+     <form method = "get" action = "write_action.php">
+        <table  style="padding-top:50px" align = center width=700 border=0 cellpadding=2 >
+                <tr>
+                <td height=20 align= center bgcolor=#ccc><font color=white> 글쓰기</font></td>
+                </tr>
+                <tr>
+                <td bgcolor=white>
+                <table class = "table2">
+                        <tr>
+                        <td>작성자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td><input type = text name = name size=20> </td>
+                        </tr>
+ 
+                        <tr>
+                        <td>제목</td>
+                        <td><input type = text name = title size=60></td>
+                        </tr>
+ 
+                        <tr>
+                        <td>내용</td>
+                        <td><textarea name = content cols=85 rows=15></textarea></td>
+                        </tr>
+ 
+                        <tr>
+                        <td>비밀번호</td>
+                        <td><input type = password name = pw size=10 maxlength=10></td>
+                        </tr>
+                        </table>
+                          <input type="file" name="file">
+                        <center>
+                        <a href="#" class="btn btn-success" role="button" onclick="alert('글작성이 완료됫습니다.');">글쓰기</a>
+                        <a href="freeBoard.html" class="btn btn-success" role="button">취소하기</a>
+                        </center>
+                </td>
+                </tr>
+        </table>
+        </form>
+
+    
+
+    
+      <!--  하단으로 정리  -->
+  <footer class="footer">
+            <li>
+               <a href="/commerce/agreement/">이용약관</a>
+               <span class="division-line">|</span>
+                <span onclick="location.href='mailto:info@osquarecorp.com';" style="cursor: pointer;">제휴문의</span>
+                <span class="division-line">|</span>
+                <a href="/partner/store_inquiry/">입점문의</a>
+                <span class="division-line">|</span>
+                <a href="/commerce/privacy/">개인정보취급방침</a>
+             </li>
+             <br>
+             <li>
+                <span>조장:김은지</span>
+                <span>조원:권상규</span>
+                <span>조원:김태민</span>
+                <span>조원:김범근</span>
+             </li>
+                <i class="fab fa-java fa-2x"></i><i class="fab  fa-html5 fa-2x"></i><i class="fab fa-github-alt fa-2x"></i>
+           </footer>
+       </div>
+    <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
+    <script src="../js/bootstrap.min.js"></script>
+  </body>
+</html>
